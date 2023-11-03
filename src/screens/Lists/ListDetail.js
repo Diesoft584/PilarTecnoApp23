@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   Dimensions,
@@ -9,11 +9,26 @@ import {
 } from 'react-native';
 import Header from '../../componets/Header';
 import {Icon} from '@rneui/themed';
+import {getPokemon} from '../../api';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const Detalle = props => {
+  const {url} = props.route.params.item;
+  const [pokemon, setPokemon] = useState(null);
+
+  useEffect(() => {
+    getPokemonDetail();
+  }, [props]);
+
+  getPokemonDetail = () => {
+    getPokemon(url).then(data => {
+      console.log(data);
+      setPokemon(data);
+    });
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <Header
@@ -28,7 +43,9 @@ const Detalle = props => {
         }
       />
       <View style={{...styles.gridRow, flexDirection: 'row'}}>
-        <Text style={{fontSize: 20}}>Detalle</Text>
+        <Text style={{fontSize: 20}}>
+          {pokemon && JSON.stringify(pokemon.abilities)}
+        </Text>
       </View>
     </SafeAreaView>
   );

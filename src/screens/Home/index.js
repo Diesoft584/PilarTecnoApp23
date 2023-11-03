@@ -18,9 +18,10 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 const Home = props => {
-  const handlePressHome = () => {};
   console.log('Hola desde HOME');
-
+  const handlePressHome = () => {
+    console.log('Hola desde HOME');
+  };
   const handlePressProfile = () => {
     console.log('Hola desde PERFIL');
     props.navigation.navigate('ProfileTab');
