@@ -19,13 +19,18 @@ const HEIGHT = Dimensions.get('window').height;
 
 const Home = props => {
   const handlePressHome = () => {};
+  console.log('Hola desde HOME');
+
   const handlePressProfile = () => {
+    console.log('Hola desde PERFIL');
     props.navigation.navigate('ProfileTab');
   };
   const handlePressLists = () => {
+    console.log('Hola desde LISTA_POKEMONS');
     props.navigation.navigate('ListsTab');
   };
   const handlePressMap = () => {
+    console.log('Hola desde MAP');
     props.navigation.navigate('MapTab');
   };
 
